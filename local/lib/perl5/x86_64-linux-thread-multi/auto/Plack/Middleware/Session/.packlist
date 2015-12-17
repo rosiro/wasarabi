@@ -1,0 +1,11 @@
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Middleware/Session.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Middleware/Session/Cookie.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/Cleanup.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/State.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/State/Cookie.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/Store.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/Store/Cache.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/Store/DBI.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/Store/File.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/Plack/Session/Store/Null.pm

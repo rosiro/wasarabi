@@ -1,0 +1,9 @@
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/Condition.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/Plugin/InsertMulti.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/Plugin/InsertOnDuplicate.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/SQLType.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/Select.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/Select/Oracle.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/SelectSet.pm
+/home/project/wasarabi/sourcecode/wasarabi/local/lib/perl5/SQL/Maker/Util.pm
