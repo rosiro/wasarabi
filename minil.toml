@@ -1,0 +1,3 @@
+name="wasarabi"
+[build]
+build_class = "builder::MyBuilder"
