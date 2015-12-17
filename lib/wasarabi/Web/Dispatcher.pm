@@ -26,4 +26,24 @@ post '/account/logout' => sub {
     return $c->redirect('/');
 };
 
+any '/account/setting' => sub {
+    my ($c) = @_;
+    return $c->redirect('/');
+};
+
+any '/wiki/create' => sub {
+    my ($c) = @_;
+    return $c->redirect('/');
+};
+
+any '/wiki/list' => sub {
+    my ($c) = @_;
+    return $c->redirect('/');
+};
+
+any '/wiki/setting' => sub {
+    my ($c) = @_;
+    return $c->redirect('/');
+};
+
 1;
