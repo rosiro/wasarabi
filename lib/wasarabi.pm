@@ -11,26 +11,31 @@ use parent qw/Amon2/;
 # Enable project local mode.
 __PACKAGE__->make_local_context();
 
-my $schema = wasarabi::DB::Schema->instance;
+use Amon2::Config::Simple;
 
 sub db {
-    my $c = shift;
-    if (!exists $c->{db}) {
-        my $conf = $c->config->{DBI}
-            or die "Missing configuration about DBI";
-        $c->{db} = wasarabi::DB->new(
-            schema       => $schema,
-            connect_info => [@$conf],
-            # I suggest to enable following lines if you are using mysql.
-            # on_connect_do => [
-            #     'SET SESSION sql_mode=STRICT_TRANS_TABLES;',
-            # ],
-        );
+    my ($self, $c) = @_;
+    if (!defined $self->{db}) {
+        my $conf = $self->config->{'DBI'} or die "missing configuration for 'DBI'";
+        my $dbh = DBI->connect($conf->{dsn}, $conf->{username}, $conf->{password}, $conf->{connect_options});
+        $self->{db} = wasarabi::DB->new({ dbh => $dbh });
     }
-    $c->{db};
+    return $self->{db};
+}
+
+sub datetime {
+    my ($self, $c) = @_;
+    my $timepiece = Time::Piece::localtime();
+    $self->{datetime} = $timepiece;
+    return $self->{datetime};
+}
+
+sub config {
+    return Amon2::Config::Simple->load(shift);
 }
 
 1;
+
 __END__
 
 =head1 NAME
