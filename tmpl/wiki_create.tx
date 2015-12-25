@@ -1,0 +1,33 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h1>create wiki</h1>
+
+<form action="/wiki_create" method="POST">
+  <table class="table">
+    <tr>
+      <td>タイトル</td>
+      <td>
+	: if($check_results.title) {
+	: if($check_results.title == 'missing' ){
+	タイトルが未入力です
+	: }
+        : }
+      </td>
+      <td><input type="text" name="wiki_title" value="" placeholder="title"></td>
+    </tr>
+    <tr>
+      <td>本文</td>
+      <td>
+	: if($check_results.honbun) {
+	: if($check_results.honbun == 'missing' ){
+	本文が未入力です
+	: }
+        : }
+      </td>
+      <td><textarea name="wiki_honbun"></textarea>
+  </tr>
+  </table>
+  <input type="submit" value="上記の内容を確認する">
+</form>
+: }

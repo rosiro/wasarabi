@@ -1,0 +1,20 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h1>create wiki</h1>
+
+<form action="/wiki_create" method="POST">
+  <table class="table">
+    <tr>
+      <td>タイトル</td>
+      <td><: $req_title :><input type="hidden" name="wiki_title" value="<: $req_title :>"></td>
+    </tr>
+    <tr>
+      <td>本文</td>
+      <td><: $req_honbun :><input type="hidden" name="wiki_honbun" value="<: $req_honbun :>"></textarea>
+  </tr>
+</table>
+<input type="hidden" name="check_wiki" value="ok">
+  <input type="submit" value="上記の内容を確認する">
+</form>
+: }

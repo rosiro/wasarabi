@@ -31,7 +31,7 @@ sub make_instance {
         }
     }
     my $view = Text::Xslate->new(+{
-        'syntax'   => 'TTerse',
+        'syntax'   => 'Kolon',
         'module'   => [
             'Text::Xslate::Bridge::Star',
             'wasarabi::Web::ViewFunctions',

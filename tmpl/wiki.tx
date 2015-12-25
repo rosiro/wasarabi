@@ -1,0 +1,8 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h1><: $wiki.title :></h1>
+
+<: $wiki.honbun :>
+  <p>最終更新 : <: $wiki.lastupdate_datetime.ymd :> <: $wiki.lastupdate_datetime.hms :></p>
+: }

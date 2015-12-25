@@ -8,25 +8,6 @@ use Teng::Schema::Declare;
 base_row_class 'wasarabi::DB::Row';
 
 table {
-    name 'page';
-    pk 'id';
-    columns (
-        {name => 'id', type => 4},
-        {name => 'pagename', type => 12},
-        {name => 'revision_id', type => 4},
-        {name => 'lastupdate_datetime', type => 11},
-    );
-    inflate qr/lastupdate_datetime/ => sub {
-        my ($col_value) = shift;
-        return Time::Piece->strptime($col_value,'%Y-%m-%d %H:%M:%S');
-    };
-    deflate qr/lastupdate_datetime/ => sub {
-        my ($col_value) = shift;
-        return $col_value->ymd.' '.$col_value->hms;
-    };
-};
-
-table {
     name 'revision';
     pk 'id';
     columns (
@@ -61,6 +42,25 @@ table {
         return Time::Piece->strptime($col_value,'%Y-%m-%d %H:%M:%S');
     };
     deflate qr/.*?_datetime/ => sub {
+        my ($col_value) = shift;
+        return $col_value->ymd.' '.$col_value->hms;
+    };
+};
+
+table {
+    name 'wiki';
+    pk 'id';
+    columns (
+        {name => 'id', type => 4},
+        {name => 'title', type => 12},
+        {name => 'revision_id', type => 4},
+        {name => 'lastupdate_datetime', type => 11},
+    );
+    inflate qr/lastupdate_datetime/ => sub {
+        my ($col_value) = shift;
+        return Time::Piece->strptime($col_value,'%Y-%m-%d %H:%M:%S');
+    };
+    deflate qr/lastupdate_datetime/ => sub {
         my ($col_value) = shift;
         return $col_value->ymd.' '.$col_value->hms;
     };

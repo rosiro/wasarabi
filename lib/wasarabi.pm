@@ -4,9 +4,8 @@ use warnings;
 use utf8;
 our $VERSION='0.01';
 use 5.008001;
-use wasarabi::DB::Schema;
 use wasarabi::DB;
-
+use Time::Piece;
 use parent qw/Amon2/;
 # Enable project local mode.
 __PACKAGE__->make_local_context();
