@@ -84,7 +84,34 @@ sub load_wiki {
 }
 
 sub search {
-    my $self = shift;
+    my ($self, $c) = @_;
+    my $db = $c->{db};
+    my $page = $c->{page};
+    my $sort_query = $c->{sort_key};
+    my $rows = $c->{rows};
+
+    my $sql = 'SELECT * FROM wiki';
+    if($page){
+	my $limit = "";
+	$rows = 20 unless($rows);
+	if($page == 1){
+	    $limit = 0;
+	}
+	else{
+	    if($page > 1){
+		$limit = ($page - 1) * $rows;
+	    }
+	}
+	$sql .= ' LIMIT '.$limit.', '.$rows;
+    }
+    if($sort_query){
+	$sql .= ' ORDER BY '.$sort_query;
+    }
+    else{
+	$sql .= ' ORDER BY lastupdate_datetime DESC';
+    }
+    my @results = $db->search_by_sql($sql);
+    return \@results;
 }
 
 sub update {

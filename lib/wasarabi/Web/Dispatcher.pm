@@ -89,9 +89,18 @@ post '/wiki_create' => sub {
     }
 };
 
-any '/wiki_list/' => sub {
+any '/wiki_list' => sub {
     my ($c) = @_;
-    return $c->redirect('/');
+
+    my $page = $c->req->param('page');
+    my $wiki_results = wasarabi::Model::Wiki->search({
+	'db' => $c->db,
+	'page' => $page,
+						     });
+    return $c->render('wiki_list.tx', {
+	'wiki_results' => $wiki_results,
+	'title' => 'title',
+		      });
 };
 
 any '/wiki_setting' => sub {

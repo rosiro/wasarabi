@@ -1,0 +1,14 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h1><: $title :></h1>
+
+: if($wiki_results) {
+<ul>
+: for $wiki_results -> $wiki {
+<li><a href="/wiki/<: $wiki.title :>"><: $wiki.title :></a></li>
+: }
+</ul>
+: }
+
+: }
