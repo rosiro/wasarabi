@@ -27,6 +27,30 @@ table {
 };
 
 table {
+    name 'site';
+    pk 'id';
+    columns (
+	{name => 'id', type => 4},
+	{name => 'url', type => 12},
+	{name => 'title', type => 12},
+        {name => 'description', type => 12},
+        {name => 'permission_post_user', type => 4},
+        {name => 'permission_view_user', type => 4},
+        {name => 'permission_comment_user', type => 4},
+        {name => 'register_datetime', type => 11},
+        {name => 'update_datetime', type => 11},
+    );
+    inflate qr/.*?_datetime/ => sub {
+        my ($col_value) = shift;
+        return Time::Piece->strptime($col_value,'%Y-%m-%d %H:%M:%S');
+    };
+    deflate qr/.*?_datetime/ => sub {
+        my ($col_value) = shift;
+        return $col_value->ymd.' '.$col_value->hms;
+    };
+};
+
+table {
     name 'user';
     pk 'id';
     columns (
@@ -52,6 +76,7 @@ table {
     pk 'id';
     columns (
         {name => 'id', type => 4},
+        {name => 'site_id', type => 4},
         {name => 'title', type => 12},
         {name => 'revision_id', type => 4},
         {name => 'lastupdate_datetime', type => 11},

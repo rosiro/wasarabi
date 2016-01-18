@@ -13,6 +13,7 @@ any '/' => sub {
     $c->session->set('counter' => $counter);
     return $c->render('index.tx', {
         counter => $counter,
+	site => $c->{site},
 		      });
 };
 
@@ -44,6 +45,8 @@ get '/wiki/:pagename' => sub {
 	return $c->render('wiki.tx', {
 	    counter => $counter,
 	    wiki => $wiki,
+	    site => $c->{site},
+	    title => $wiki->{title},
 			  });
     }
     else{
@@ -54,6 +57,7 @@ get '/wiki/:pagename' => sub {
 get '/wiki_create' => sub {
     my ($c) = @_;
     return $c->render('wiki_create.tx', {
+	site => $c->{site},
 		      });
 };
 
@@ -64,6 +68,7 @@ post '/wiki_create' => sub {
 	$c->fillin_form($c->req);
 	return $c->render('wiki_create.tx', {
 	    check_results => $check_results,
+	    site => $c->{site},
 			  });
     }
     else{
@@ -84,6 +89,7 @@ post '/wiki_create' => sub {
 	    return $c->render('wiki_check.tx', {
 		req_title => $c->req->param('wiki_title'),
 		req_honbun => $c->req->param('wiki_honbun'),
+		site => $c->{site},
 			      });
 	}
     }
@@ -100,6 +106,7 @@ any '/wiki_list' => sub {
     return $c->render('wiki_list.tx', {
 	'wiki_results' => $wiki_results,
 	'title' => 'title',
+	site => $c->{site},
 		      });
 };
 
